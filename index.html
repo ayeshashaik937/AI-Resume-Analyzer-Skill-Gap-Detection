@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>AI Resume Analyzer with Skill Gap Detection</h1>
+
+
+    <!-- Error Message -->
+    {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endif %}
+
+
+    <!-- Input Form -->
+    <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+        <label for="job_description">
+            Job Description
+        </label>
+
+        <textarea
+            id="job_description"
+            name="job_description"
+            placeholder="Paste Job Description Here..."
+            required
+        >{{ request.form.get('job_description', '') }}</textarea>
+
+
+        <div class="upload-section">
+
+            <label for="resume">
+                Upload Resume (PDF)
+            </label>
+
+            <input
+                type="file"
+                id="resume"
+                name="resume"
+                accept=".pdf"
+                required
+            >
+
+            <button type="submit">
+                Analyze Resume
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <!-- ========================================= -->
+    <!-- RESULTS -->
+    <!-- ========================================= -->
+
+    {% if ats_score is defined %}
+
+    <div class="results">
+
+
+        <!-- ATS SCORE -->
+        <div class="card score-card">
+
+            <h2>ATS Match Score</h2>
+
+            <div class="score">
+                {{ ats_score }}%
+            </div>
+
+        </div>
+
+
+        <!-- RESUME SKILLS -->
+        <div class="card">
+
+            <h2>Resume Skills</h2>
+
+            {% if resume_skills %}
+
+                <div class="skills">
+
+                    {% for skill in resume_skills %}
+
+                        <span class="skill">
+                            {{ skill }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p>No recognized skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- JOB DESCRIPTION SKILLS -->
+        <div class="card">
+
+            <h2>Job Description Skills</h2>
+
+            {% if job_skills %}
+
+                <div class="skills">
+
+                    {% for skill in job_skills %}
+
+                        <span class="skill">
+                            {{ skill }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p>No recognized skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- MATCHED SKILLS -->
+        <div class="card">
+
+            <h2>Matched Skills</h2>
+
+            {% if matched_skills %}
+
+                <ul>
+
+                    {% for skill in matched_skills %}
+
+                        <li>{{ skill }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>No matching skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- MISSING SKILLS -->
+        <div class="card">
+
+            <h2>Missing Skills</h2>
+
+            {% if missing_skills %}
+
+                <ul>
+
+                    {% for skill in missing_skills %}
+
+                        <li>{{ skill }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>Great! No missing skills detected.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- SKILL GAP -->
+        <div class="card">
+
+            <h2>Skill Gap</h2>
+
+            <p>
+
+                {% if missing_skills %}
+
+                    Your resume is missing
+
+                    <strong>
+                        {{ skill_gap }}
+                    </strong>
+
+                    skill(s) required by the job description.
+
+                {% else %}
+
+                    No major skill gap detected.
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+
+        <!-- AI SUGGESTIONS -->
+        <div class="card">
+
+            <h2>AI Suggestions</h2>
+
+            {% if ai_suggestions %}
+
+                <div class="ai-response">
+
+                    <pre style="white-space: pre-wrap; font-family: inherit;">
+{{ ai_suggestions }}
+                    </pre>
+
+                </div>
+
+            {% else %}
+
+                <p>
+                    No AI suggestions were generated.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+</body>
+</html>

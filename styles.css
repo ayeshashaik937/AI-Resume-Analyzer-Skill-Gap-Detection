@@ -1,0 +1,413 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7ff 0%, #eef2f7 100%);
+    color: #1f2937;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 92%;
+    max-width: 950px;
+    margin: 45px auto;
+}
+
+
+/* =========================================
+   MAIN HEADING
+========================================= */
+
+h1 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #111827;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 4px;
+    margin: 12px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
+    transition: 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 14px 35px rgba(31, 41, 55, 0.11);
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* =========================================
+   JOB DESCRIPTION
+========================================= */
+
+textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 15px 17px;
+    resize: vertical;
+
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+
+    background: #f9fafb;
+    color: #1f2937;
+
+    font-size: 15px;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+textarea:hover {
+    border-color: #9ca3af;
+}
+
+textarea:focus {
+    background: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================
+   UPLOAD SECTION
+========================================= */
+
+.upload-section {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px dashed #c7d2fe;
+    border-radius: 12px;
+    background: #f8f9ff;
+}
+
+input[type="file"] {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    background: white;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    border-color: #6366f1;
+}
+
+
+/* =========================================
+   ANALYZE BUTTON
+========================================= */
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px 25px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 15px rgba(79, 70, 229, 0.25);
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 20px rgba(79, 70, 229, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error {
+    background: #fff1f2;
+    color: #be123c;
+
+    padding: 14px 16px;
+    margin-bottom: 20px;
+
+    border-left: 4px solid #e11d48;
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RESULTS
+========================================= */
+
+.results {
+    margin-top: 35px;
+}
+
+
+/* =========================================
+   RESULT CARDS
+========================================= */
+
+.card {
+    background: #ffffff;
+
+    padding: 26px;
+    margin-bottom: 22px;
+
+    border-radius: 15px;
+    border: 1px solid #e5e7eb;
+
+    box-shadow: 0 8px 25px rgba(31, 41, 55, 0.07);
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(31, 41, 55, 0.10);
+}
+
+
+.card h2 {
+    margin-bottom: 18px;
+
+    font-size: 21px;
+    font-weight: 650;
+
+    color: #111827;
+
+    border-bottom: 1px solid #eef0f3;
+    padding-bottom: 10px;
+}
+
+
+/* =========================================
+   ATS SCORE CARD
+========================================= */
+
+.score-card {
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #f8f9ff);
+}
+
+.score-card h2 {
+    border-bottom: none;
+}
+
+
+.score {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 125px;
+    height: 125px;
+
+    margin-top: 10px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+
+    color: white;
+
+    font-size: 36px;
+    font-weight: 700;
+
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.25);
+}
+
+
+/* =========================================
+   SKILLS
+========================================= */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.skill {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    background: #eef2ff;
+    border: 1px solid #e0e7ff;
+
+    color: #4338ca;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: all 0.2s ease;
+}
+
+.skill:hover {
+    background: #e0e7ff;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   LISTS
+========================================= */
+
+ul {
+    padding-left: 22px;
+}
+
+
+li {
+    margin-bottom: 9px;
+    color: #4b5563;
+}
+
+
+li::marker {
+    color: #6366f1;
+}
+
+
+/* =========================================
+   PARAGRAPHS
+========================================= */
+
+.card p {
+    color: #4b5563;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    h1 {
+        font-size: 27px;
+        margin-bottom: 25px;
+    }
+
+    form,
+    .card {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    textarea {
+        min-height: 150px;
+        font-size: 14px;
+    }
+
+    .upload-section {
+        padding: 16px;
+    }
+
+    .score {
+        width: 105px;
+        height: 105px;
+        font-size: 30px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL ANIMATION
+========================================= */
+
+.card,
+form {
+    animation: fadeUp 0.5s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
